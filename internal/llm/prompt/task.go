@@ -3,7 +3,7 @@ package prompt
 import (
 	"fmt"
 
-	"github.com/opencode-ai/opencode/internal/llm/models"
+	"github.com/scrappylabsai/fleetcode/internal/llm/models"
 )
 
 func TaskPrompt(_ models.ModelProvider) string {

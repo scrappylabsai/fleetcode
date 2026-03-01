@@ -3,12 +3,12 @@ package agent
 import (
 	"context"
 
-	"github.com/opencode-ai/opencode/internal/history"
-	"github.com/opencode-ai/opencode/internal/llm/tools"
-	"github.com/opencode-ai/opencode/internal/lsp"
-	"github.com/opencode-ai/opencode/internal/message"
-	"github.com/opencode-ai/opencode/internal/permission"
-	"github.com/opencode-ai/opencode/internal/session"
+	"github.com/scrappylabsai/fleetcode/internal/history"
+	"github.com/scrappylabsai/fleetcode/internal/llm/tools"
+	"github.com/scrappylabsai/fleetcode/internal/lsp"
+	"github.com/scrappylabsai/fleetcode/internal/message"
+	"github.com/scrappylabsai/fleetcode/internal/permission"
+	"github.com/scrappylabsai/fleetcode/internal/session"
 )
 
 func CoderAgentTools(

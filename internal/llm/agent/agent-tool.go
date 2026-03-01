@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/llm/tools"
-	"github.com/opencode-ai/opencode/internal/lsp"
-	"github.com/opencode-ai/opencode/internal/message"
-	"github.com/opencode-ai/opencode/internal/session"
+	"github.com/scrappylabsai/fleetcode/internal/config"
+	"github.com/scrappylabsai/fleetcode/internal/llm/tools"
+	"github.com/scrappylabsai/fleetcode/internal/lsp"
+	"github.com/scrappylabsai/fleetcode/internal/message"
+	"github.com/scrappylabsai/fleetcode/internal/session"
 )
 
 type agentTool struct {

@@ -9,42 +9,42 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	zone "github.com/lrstanley/bubblezone"
-	"github.com/opencode-ai/opencode/internal/app"
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/db"
-	"github.com/opencode-ai/opencode/internal/format"
-	"github.com/opencode-ai/opencode/internal/llm/agent"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/pubsub"
-	"github.com/opencode-ai/opencode/internal/tui"
-	"github.com/opencode-ai/opencode/internal/version"
+	"github.com/scrappylabsai/fleetcode/internal/app"
+	"github.com/scrappylabsai/fleetcode/internal/config"
+	"github.com/scrappylabsai/fleetcode/internal/db"
+	"github.com/scrappylabsai/fleetcode/internal/format"
+	"github.com/scrappylabsai/fleetcode/internal/llm/agent"
+	"github.com/scrappylabsai/fleetcode/internal/logging"
+	"github.com/scrappylabsai/fleetcode/internal/pubsub"
+	"github.com/scrappylabsai/fleetcode/internal/tui"
+	"github.com/scrappylabsai/fleetcode/internal/version"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "opencode",
-	Short: "Terminal-based AI assistant for software development",
-	Long: `OpenCode is a powerful terminal-based AI assistant that helps with software development tasks.
-It provides an interactive chat interface with AI capabilities, code analysis, and LSP integration
-to assist developers in writing, debugging, and understanding code directly from the terminal.`,
+	Use:   "fleetcode",
+	Short: "Fleet AI coding agent — identity-aware, voice-enabled, built for the fleet",
+	Long: `FleetCode is a fleet-native AI coding agent forked from OpenCode.
+Each node gets its own identity, voice, and LLM routing. Built for distributed
+AI fleets with per-node personality, fleet-rpc integration, and TTS support.`,
 	Example: `
   # Run in interactive mode
-  opencode
+  fleetcode
 
   # Run with debug logging
-  opencode -d
+  fleetcode -d
 
-  # Run with debug logging in a specific directory
-  opencode -d -c /path/to/project
+  # Run in a specific directory
+  fleetcode -d -c /path/to/project
 
   # Print version
-  opencode -v
+  fleetcode -v
 
   # Run a single non-interactive prompt
-  opencode -p "Explain the use of context in Go"
+  fleetcode -p "What node am I on?"
 
-  # Run a single non-interactive prompt with JSON output format
-  opencode -p "Explain the use of context in Go" -f json
+  # Run with JSON output
+  fleetcode -p "List fleet nodes" -f json
   `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// If the help flag is set, show the help message

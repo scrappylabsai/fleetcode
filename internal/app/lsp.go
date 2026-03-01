@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/lsp"
-	"github.com/opencode-ai/opencode/internal/lsp/watcher"
+	"github.com/scrappylabsai/fleetcode/internal/config"
+	"github.com/scrappylabsai/fleetcode/internal/logging"
+	"github.com/scrappylabsai/fleetcode/internal/lsp"
+	"github.com/scrappylabsai/fleetcode/internal/lsp/watcher"
 )
 
 func (app *App) initLSPClients(ctx context.Context) {

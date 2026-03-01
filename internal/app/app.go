@@ -9,17 +9,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/db"
-	"github.com/opencode-ai/opencode/internal/format"
-	"github.com/opencode-ai/opencode/internal/history"
-	"github.com/opencode-ai/opencode/internal/llm/agent"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/lsp"
-	"github.com/opencode-ai/opencode/internal/message"
-	"github.com/opencode-ai/opencode/internal/permission"
-	"github.com/opencode-ai/opencode/internal/session"
-	"github.com/opencode-ai/opencode/internal/tui/theme"
+	"github.com/scrappylabsai/fleetcode/internal/config"
+	"github.com/scrappylabsai/fleetcode/internal/db"
+	"github.com/scrappylabsai/fleetcode/internal/format"
+	"github.com/scrappylabsai/fleetcode/internal/history"
+	"github.com/scrappylabsai/fleetcode/internal/llm/agent"
+	"github.com/scrappylabsai/fleetcode/internal/logging"
+	"github.com/scrappylabsai/fleetcode/internal/lsp"
+	"github.com/scrappylabsai/fleetcode/internal/message"
+	"github.com/scrappylabsai/fleetcode/internal/permission"
+	"github.com/scrappylabsai/fleetcode/internal/session"
+	"github.com/scrappylabsai/fleetcode/internal/tui/theme"
 )
 
 type App struct {

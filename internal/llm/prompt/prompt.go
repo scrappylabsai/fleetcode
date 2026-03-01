@@ -7,9 +7,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/llm/models"
-	"github.com/opencode-ai/opencode/internal/logging"
+	"github.com/scrappylabsai/fleetcode/internal/config"
+	"github.com/scrappylabsai/fleetcode/internal/llm/models"
+	"github.com/scrappylabsai/fleetcode/internal/logging"
 )
 
 func GetAgentPrompt(agentName config.AgentName, provider models.ModelProvider) string {
@@ -28,6 +28,12 @@ func GetAgentPrompt(agentName config.AgentName, provider models.ModelProvider) s
 	}
 
 	if agentName == config.AgentCoder || agentName == config.AgentTask {
+		// Load global fleet identity (node personality, voice, capabilities)
+		identityContent := getFleetIdentity()
+		if identityContent != "" {
+			basePrompt = fmt.Sprintf("%s\n\n# Fleet Identity\n%s", basePrompt, identityContent)
+		}
+
 		// Add context from project-specific instruction files if they exist
 		contextContent := getContextFromPaths()
 		logging.Debug("Context content", "Context", contextContent)
@@ -36,6 +42,41 @@ func GetAgentPrompt(agentName config.AgentName, provider models.ModelProvider) s
 		}
 	}
 	return basePrompt
+}
+
+// getFleetIdentity loads the global fleet identity file.
+// This is what gives each node its personality, voice, and role.
+// Searched paths (first found wins):
+//  1. $FLEETCODE_IDENTITY (env override)
+//  2. ~/.config/fleetcode/identity.md
+//  3. ~/.qwen/QWEN.md (legacy compat)
+func getFleetIdentity() string {
+	// Check env override first
+	if envPath := os.Getenv("FLEETCODE_IDENTITY"); envPath != "" {
+		if content, err := os.ReadFile(envPath); err == nil {
+			logging.Debug("Fleet identity loaded from env", "path", envPath)
+			return string(content)
+		}
+	}
+
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		return ""
+	}
+
+	identityPaths := []string{
+		filepath.Join(homeDir, ".config", "fleetcode", "identity.md"),
+		filepath.Join(homeDir, ".qwen", "QWEN.md"),
+	}
+
+	for _, path := range identityPaths {
+		if content, err := os.ReadFile(path); err == nil {
+			logging.Debug("Fleet identity loaded", "path", path)
+			return string(content)
+		}
+	}
+
+	return ""
 }
 
 var (

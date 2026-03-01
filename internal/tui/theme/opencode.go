@@ -271,7 +271,9 @@ func NewOpenCodeTheme() *OpenCodeTheme {
 }
 
 func init() {
-	// Register the OpenCode theme with the theme manager
-	RegisterTheme("opencode", NewOpenCodeTheme())
+	// Register theme under both names for compatibility
+	theme := NewOpenCodeTheme()
+	RegisterTheme("fleetcode", theme)
+	RegisterTheme("opencode", theme)
 }
 

@@ -8,16 +8,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/llm/models"
-	"github.com/opencode-ai/opencode/internal/llm/prompt"
-	"github.com/opencode-ai/opencode/internal/llm/provider"
-	"github.com/opencode-ai/opencode/internal/llm/tools"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/message"
-	"github.com/opencode-ai/opencode/internal/permission"
-	"github.com/opencode-ai/opencode/internal/pubsub"
-	"github.com/opencode-ai/opencode/internal/session"
+	"github.com/scrappylabsai/fleetcode/internal/config"
+	"github.com/scrappylabsai/fleetcode/internal/llm/models"
+	"github.com/scrappylabsai/fleetcode/internal/llm/prompt"
+	"github.com/scrappylabsai/fleetcode/internal/llm/provider"
+	"github.com/scrappylabsai/fleetcode/internal/llm/tools"
+	"github.com/scrappylabsai/fleetcode/internal/logging"
+	"github.com/scrappylabsai/fleetcode/internal/message"
+	"github.com/scrappylabsai/fleetcode/internal/permission"
+	"github.com/scrappylabsai/fleetcode/internal/pubsub"
+	"github.com/scrappylabsai/fleetcode/internal/session"
 )
 
 // Common errors
